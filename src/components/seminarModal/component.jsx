@@ -34,7 +34,7 @@ export const SeminarModal = ({ seminar, onClose, onSave }) => {
   const handleDateChange = (e) => setDate(e.target.value);
   const handleTimeChange = (e) => setTime(e.target.value);
   const handlePhotoChange = (e) => {
-    setPhoto(e.target.value); // или e.target.files[0], если загружается файл
+    setPhoto(e.target.value); 
   };
 
   // Обработчик сохранения данных
@@ -53,7 +53,7 @@ export const SeminarModal = ({ seminar, onClose, onSave }) => {
 
       const updatedData = await response.json();
       onSave(updatedData); // Передаём обновлённые данные в родительский компонент
-      onClose(); // Закрываем модалку
+      onClose(); 
     } catch (error) {
       console.error("Ошибка обновления:", error);
     } finally {
@@ -95,10 +95,12 @@ export const SeminarModal = ({ seminar, onClose, onSave }) => {
           value={time}
           onChange={handleTimeChange}
         />
-        <button onClick={handleSave} disabled={isLoading}>
+        <div className={classname(styles.buttons)}>
+        <button className={classname(styles.buttonSave)} onClick={handleSave} disabled={isLoading}>
           {isLoading ? "Сохранение..." : "Сохранить"}
         </button>
-        <button onClick={onClose} disabled={isLoading}>Закрыть</button>
+        <button className={classname(styles.buttonClose)} onClick={onClose} disabled={isLoading}>Закрыть</button>
+        </div>
       </div>
     </div>
   );

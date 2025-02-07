@@ -26,12 +26,12 @@ export const SeminarList = () => {
       .catch((error) => console.error("Ошибка загрузки данных:", error)) //Подумал, что реактивность при изменении json не будет лишней.
       fetchSeminars();
     
-     // Настроим таймер для периодического опроса каждые 5 секунд
+     // Таймер для периодического опроса каждые 5 секунд. 
       const intervalId = setInterval(() => {
         fetchSeminars();
       }, 5000); // 5000 мс = 5 секунд
 
-    // Очистим таймер при размонтировании компонента
+    
     return () => clearInterval(intervalId);
   }, []);
 
@@ -39,7 +39,7 @@ export const SeminarList = () => {
   const handleEdit = (seminar) => {
     console.log("Семинар выбран для редактирования:", seminar); // Логирование выбранного семинара
     setSelectedSeminar(seminar);
-    setIsModalOpen(true); // Открытие модалки
+    setIsModalOpen(true); 
   };
 
   const handleDelete = (seminarId) => {

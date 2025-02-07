@@ -1,20 +1,19 @@
 import classname from "classname";
 import styles from "./styles.module.scss";
 import PropTypes from "prop-types";
+import { deleteSeminar } from "../../api"; 
+
 
 
 
 export const SeminarItem = ({seminar, onEdit, onConfirm }) =>{
   const handleDelete = async () => {
     const isConfirmed = window.confirm("Вы уверены, что хотите удалить этот семинар?");
-    if (!isConfirmed) return; // Если пользователь отменил — выходим
+    if (!isConfirmed) return;
   
     try {
-      await fetch(`http://localhost:5000/seminars/${seminar.id}`, {
-        method: "DELETE",
-      });
-  
-      onConfirm(seminar.id); // Сообщаем родителю, что семинар удален
+      await deleteSeminar(seminar.id); //Функция из api альтернатива fetch
+      onConfirm(seminar.id); 
     } catch (error) {
       console.error("Ошибка удаления:", error);
     }
@@ -43,6 +42,6 @@ SeminarItem.propTypes = {
       time: PropTypes.string.isRequired,
       photo: PropTypes.string.isRequired,
     }).isRequired,
-    onEdit: PropTypes.func.isRequired, // Обработчик для открытия модального окна
+    onEdit: PropTypes.func.isRequired, 
     onConfirm: PropTypes.func.isRequired
   };
