@@ -1,0 +1,40 @@
+.seminarCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; // Равномерное распределение контента
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%; // Фиксирует высоту
+    min-height: 300px; // Минимальная высота
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+.buttons{
+    display: flex;
+    gap: 10px;
+    button{
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .buttonEdit{
+        &:hover {
+            background-color: #0056b3;
+          }
+    }
+    .buttonDelete{
+        background-color: #ff4d4d;
+
+        &:hover {
+            background-color: #cc0000;
+        }
+    }
+}
